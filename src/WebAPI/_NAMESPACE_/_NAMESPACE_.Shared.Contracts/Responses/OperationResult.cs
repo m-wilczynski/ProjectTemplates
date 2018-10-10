@@ -4,10 +4,12 @@ using System;
 namespace _NAMESPACE_.Shared.Contracts.Responses
 {
     /// <summary>
-    /// Result of system processing a request with response of <see cref="TResponse"/> 
+    /// Result of system processing a request of <see cref="TRequest"/> with corresponding response of <see cref="TResponse"/> 
     /// </summary>
-    /// <typeparam name="TResponse">Provided response</typeparam>
-    public class OperationResult<TResponse> where TResponse : IResponse<IRequest>
+    /// <typeparam name="TRequest">Request for which system returned result</typeparam>
+    /// <typeparam name="TResponse">Provided response to result</typeparam>
+    public class OperationResult<TRequest, TResponse> 
+        where TResponse : IResponse<TRequest> where TRequest : IRequest
     {
         /// <summary>
         /// Result data - default(TResponse) if failed
@@ -39,15 +41,51 @@ namespace _NAMESPACE_.Shared.Contracts.Responses
         /// </summary>
         /// <param name="errorMessage">Error message</param>
         /// <returns></returns>
-        public static OperationResult<TResponse> Failure(string errorMessage) =>
-            new OperationResult<TResponse>(default(TResponse), errorMessage);
+        public static OperationResult<TRequest, TResponse> Failure(string errorMessage) =>
+            new OperationResult<TRequest, TResponse>(default(TResponse), errorMessage);
 
         /// <summary>
         /// Operation succeeded
         /// </summary>
         /// <param name="result">Result for user</param>
         /// <returns></returns>
-        public static OperationResult<TResponse> Success(TResponse result) =>
-            new OperationResult<TResponse>(result);
+        public static OperationResult<TRequest, TResponse> Success(TResponse result) =>
+            new OperationResult<TRequest, TResponse>(result);
+    }
+
+    /// <summary>
+    /// Result of system processing a request of with no response except success indicator
+    /// </summary>
+    public class OperationResult
+    {
+        /// <summary>
+        /// Error message - if failed
+        /// </summary>
+        public readonly string ErrorMessage;
+
+        /// <summary>
+        /// Did operation succeed?
+        /// </summary>
+        public bool Successful => ErrorMessage != null;
+
+        private OperationResult(string errorMessage = null)
+        {
+            ErrorMessage = errorMessage;
+        }
+
+        /// <summary>
+        /// Operation failed
+        /// </summary>
+        /// <param name="errorMessage">Error message</param>
+        /// <returns></returns>
+        public static OperationResult Failure(string errorMessage) =>
+            new OperationResult(errorMessage);
+
+        /// <summary>
+        /// Operation succeeded
+        /// </summary>
+        /// <returns></returns>
+        public static OperationResult Success() =>
+            new OperationResult();
     }
 }

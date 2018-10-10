@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\_NAMESPACE_.Shared.Contracts\_NAMESPACE_.Shared.Contracts.csproj" />
+    <ProjectReference Include="..\_NAMESPACE_.Shared.Infrastructure\_NAMESPACE_.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
