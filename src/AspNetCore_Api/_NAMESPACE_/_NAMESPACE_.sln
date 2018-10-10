@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E2740C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{08596B62-08BE-4120-97AB-6D1D63B7FF8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Convention.UnitTests", "Test.Contention.UnitTests\Test.Convention.UnitTests.csproj", "{BC7C192A-B744-4376-8757-D5127A7430CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Convention.UnitTests", "Test.Convention.UnitTests\Test.Convention.UnitTests.csproj", "{BC7C192A-B744-4376-8757-D5127A7430CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
