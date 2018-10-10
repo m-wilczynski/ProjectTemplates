@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <AssemblyName>Test.Convention.UnitTests</AssemblyName>
+
+    <RootNamespace>Test.Convention.UnitTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Test\Test.csproj" />
+    <ProjectReference Include="..\_NAMESPACE_.Shared.Contracts\_NAMESPACE_.Shared.Contracts.csproj" />
+    <ProjectReference Include="..\_NAMESPACE_.Shared.Infrastructure\_NAMESPACE_.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

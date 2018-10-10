@@ -10,10 +10,7 @@ namespace Test
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterAssemblyTypes(typeof(Program).Assembly).AsClosedTypesOf(typeof(ICommandHandler<>));
-            builder.RegisterAssemblyTypes(typeof(Program).Assembly).AsClosedTypesOf(typeof(ICommandHandler<,>));
-            builder.RegisterAssemblyTypes(typeof(Program).Assembly).AsClosedTypesOf(typeof(IQueryHandler<,>));
-
+            builder.RegisterModule<HandlersModule>();
             builder.RegisterType<Composite>().As<Composite>();
 
             var container = builder.Build();

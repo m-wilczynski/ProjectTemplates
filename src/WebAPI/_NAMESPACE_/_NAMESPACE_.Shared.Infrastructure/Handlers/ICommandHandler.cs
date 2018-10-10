@@ -7,7 +7,7 @@ namespace _NAMESPACE_.Shared.Infrastructure.Handlers
     /// Handler responsible for give <see cref="TCommand"/>
     /// </summary>
     /// <typeparam name="TCommand">Command (to modify system) to be handled</typeparam>
-    public interface ICommandHandler<TCommand>
+    public interface ICommandHandler<TCommand> : ICommandHandler
         where TCommand : ICommand
     {
         /// <summary>
@@ -23,7 +23,7 @@ namespace _NAMESPACE_.Shared.Infrastructure.Handlers
     /// </summary>
     /// <typeparam name="TCommand">Command (to modify system) to be handled</typeparam>
     /// <typeparam name="TResponse">Response on handling command</typeparam>
-    public interface ICommandHandler<TCommand, TResponse>
+    public interface ICommandHandler<TCommand, TResponse> : ICommandHandler
         where TCommand : ICommand where TResponse : IResponse<TCommand>
     {
         /// <summary>
@@ -32,5 +32,13 @@ namespace _NAMESPACE_.Shared.Infrastructure.Handlers
         /// <param name="command">Command</param>
         /// <returns>Result with corresponding <see cref="TResponse"/></returns>
         OperationResult<TCommand, TResponse> Handle(TCommand command);
+    }
+
+
+    /// <summary>
+    /// Marker interface
+    /// </summary>
+    public interface ICommandHandler
+    {
     }
 }
